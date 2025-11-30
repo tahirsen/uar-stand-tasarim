@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpoMaster - Global Exhibition Solutions</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                            gold: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #0c4a6e; border-radius: 4px; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(12, 74, 110, 0.85), rgba(12, 74, 110, 0.6)), url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .portfolio-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1em;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-white">
+
+    <!-- Navigasyon -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-brand-900 rounded-tr-xl rounded-bl-xl flex items-center justify-center text-white text-xl font-bold border-2 border-brand-gold">
+                        E
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-xl leading-none text-gray-900">EXPOMASTER</span>
+                        <span class="text-xs text-brand-600 font-semibold tracking-widest">STAND DESIGN</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#home" class="text-gray-600 hover:text-brand-600 font-medium transition-colors" data-i18n="nav_home">Home</a>
+                    <a href="#services" class="text-gray-600 hover:text-brand-600 font-medium transition-colors" data-i18n="nav_services">Services</a>
+                    <a href="#portfolio" class="text-gray-600 hover:text-brand-600 font-medium transition-colors" data-i18n="nav_portfolio">Capabilities</a>
+                    <a href="#process" class="text-gray-600 hover:text-brand-600 font-medium transition-colors" data-i18n="nav_process">Process</a>
+                    
+                    <div class="relative">
+                        <select id="language-selector" onchange="changeLanguage(this.value)" class="pl-3 pr-8 py-1 bg-gray-100 rounded-md text-sm border-none focus:ring-2 focus:ring-brand-500 cursor-pointer font-semibold text-gray-700">
+                            <option value="en" selected>🇬🇧 EN</option>
+                            <option value="tr">🇹🇷 TR</option>
+                            <option value="de">🇩🇪 DE</option>
+                            <option value="fr">🇫🇷 FR</option>
+                            <option value="es">🇪🇸 ES</option>
+                            <option value="it">🇮🇹 IT</option>
+                            <option value="zh">🇨🇳 ZH</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="md:hidden flex items-center gap-4">
+                     <select onchange="changeLanguage(this.value)" class="block md:hidden text-sm bg-transparent border border-gray-300 rounded p-1">
+                        <option value="en" selected>EN</option>
+                        <option value="tr">TR</option>
+                        <option value="de">DE</option>
+                        <option value="fr">FR</option>
+                        <option value="es">ES</option>
+                        <option value="it">IT</option>
+                        <option value="zh">ZH</option>
+                    </select>
+
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-md" data-i18n="nav_home">Home</a>
+                <a href="#services" class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-md" data-i18n="nav_services">Services</a>
+                <a href="#portfolio" class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-md" data-i18n="nav_portfolio">Capabilities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Alanı -->
+    <section id="home" class="relative pt-32 pb-24 lg:pt-48 lg:pb-40 hero-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <span class="inline-block py-1 px-4 border border-brand-gold text-brand-gold text-sm font-bold tracking-widest mb-6 bg-black/30 backdrop-blur-sm rounded-sm uppercase" data-i18n="hero_badge">
+                Your Global Solution Partner
+            </span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                <span data-i18n="hero_title_1">Make Your Brand</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-white" data-i18n="hero_highlight">A Star</span><br>
+                <span data-i18n="hero_title_2">At Exhibitions</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-200 mb-10 font-light" data-i18n="hero_desc">
+                From custom wooden stands to modular systems, we design and build impressive exhibition spaces that reflect your brand identity.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="px-8 py-4 bg-brand-gold hover:bg-amber-600 text-white font-bold rounded-sm transition-all shadow-lg transform hover:-translate-y-1" data-i18n="btn_free_quote">
+                    Free Design Quote
+                </a>
+                <a href="#portfolio" class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-sm hover:bg-white hover:text-brand-900 transition-all transform hover:-translate-y-1" data-i18n="btn_view_portfolio">
+                    Explore Capabilities
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-0 w-full bg-black/40 backdrop-blur-md border-t border-white/10 py-6 hidden md:block">
+            <div class="max-w-7xl mx-auto px-4 flex justify-around text-center text-gray-300 text-sm font-medium">
+                <div><i class="fas fa-drafting-compass text-brand-500 mr-2"></i><span data-i18n="feature_3d">3D Design Support</span></div>
+                <div><i class="fas fa-truck-loading text-brand-500 mr-2"></i><span data-i18n="feature_logistic">Logistics & Storage</span></div>
+                <div><i class="fas fa-tools text-brand-500 mr-2"></i><span data-i18n="feature_install">Turnkey Installation</span></div>
+                <div><i class="fas fa-globe-europe text-brand-500 mr-2"></i><span data-i18n="feature_global">Domestic & International</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hizmetler -->
+    <section id="services" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4" data-i18n="services_title">Our Services</h2>
+                <div class="h-1 w-20 bg-brand-gold mx-auto rounded-full"></div>
+                <p class="mt-4 text-lg text-gray-600" data-i18n="services_desc">We build not just a stand, but an experience area that will impress your visitors.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-brand-900 group">
+                    <div class="w-16 h-16 bg-brand-50 text-brand-900 rounded-lg flex items-center justify-center text-3xl mb-6 group-hover:bg-brand-900 group-hover:text-white transition-colors">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="service_1_title">Custom Wooden Design</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="service_1_desc">
+                        Unique wooden stand designs specific to your brand. VIP areas that take your prestige to the top level.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-brand-gold group">
+                    <div class="w-16 h-16 bg-amber-50 text-brand-gold rounded-lg flex items-center justify-center text-3xl mb-6 group-hover:bg-brand-gold group-hover:text-white transition-colors">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="service_2_title">Maxima & Modular</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="service_2_desc">
+                        Stylish, modern and cost-effective solutions. Aluminum elegance of Maxima systems with fast installation.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-brand-900 group">
+                    <div class="w-16 h-16 bg-brand-50 text-brand-900 rounded-lg flex items-center justify-center text-3xl mb-6 group-hover:bg-brand-900 group-hover:text-white transition-colors">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="service_3_title">Technical & Logistics</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="service_3_desc">
+                        We manage the entire process from transport, electrical and lighting installation to dismantling and storage.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- "Ne Yapabiliriz" Bölümü (Eski Portfolyo) -->
+    <section id="portfolio" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl" data-i18n="portfolio_title">What We Can Create</h2>
+                    <p class="mt-2 text-gray-600" data-i18n="portfolio_desc">Explore our design capabilities and imagine what we can build for you.</p>
+                </div>
+                <a href="#contact" class="mt-4 md:mt-0 text-brand-600 font-semibold hover:text-brand-900 transition-colors flex items-center">
+                    <span data-i18n="view_all">Start Your Project</span> <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Tasarım 1: Ekolojik/Bitkili -->
+                <div class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer shadow-md">
+                    <!-- GÜNCELLEME: Dosya ismi eklendi -->
+                    <img src="Gemini_Generated_Image_ep40y5ep40y5ep40.jpg" alt="Eco Structure" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-brand-gold text-xs font-bold uppercase tracking-wider mb-1">Eco Concept</span>
+                        <h3 class="text-white text-xl font-bold" data-i18n="project_1_title">GreenTech Pavilion</h3>
+                        <p class="text-gray-300 text-sm mt-2" data-i18n="project_1_desc">Sustainable Truss & Plants</p>
+                    </div>
+                </div>
+
+                <!-- Tasarım 2: Neon/AI -->
+                <div class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer shadow-md">
+                    <!-- GÜNCELLEME: Dosya ismi eklendi -->
+                    <img src="Gemini_Generated_Image_7o3m1u7o3m1u7o3m.jpg" alt="Neon AI Stand" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-brand-gold text-xs font-bold uppercase tracking-wider mb-1">Tech Concept</span>
+                        <h3 class="text-white text-xl font-bold" data-i18n="project_2_title">Neural Nexus</h3>
+                        <p class="text-gray-300 text-sm mt-2" data-i18n="project_2_desc">Immersive LED Experience</p>
+                    </div>
+                </div>
+
+                <!-- Tasarım 3: Medikal/Temiz -->
+                <div class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer shadow-md">
+                    <!-- GÜNCELLEME: Dosya ismi eklendi -->
+                    <img src="Gemini_Generated_Image_bu6nw4bu6nw4bu6n.jpg" alt="Medical Stand" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-brand-gold text-xs font-bold uppercase tracking-wider mb-1">Medical Concept</span>
+                        <h3 class="text-white text-xl font-bold" data-i18n="project_3_title">Precision Spinal</h3>
+                        <p class="text-gray-300 text-sm mt-2" data-i18n="project_3_desc">Clean Lines & Soft Lighting</p>
+                    </div>
+                </div>
+
+                <!-- Tasarım 4: Ahşap/Grafik -->
+                <div class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer shadow-md">
+                    <!-- GÜNCELLEME: Dosya ismi eklendi -->
+                    <img src="Gemini_Generated_Image_wf52ctwf52ctwf52.jpg" alt="Data Management Stand" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-brand-gold text-xs font-bold uppercase tracking-wider mb-1">Corporate Concept</span>
+                        <h3 class="text-white text-xl font-bold" data-i18n="project_4_title">DataLogic Systems</h3>
+                        <p class="text-gray-300 text-sm mt-2" data-i18n="project_4_desc">Warm Wood & Geometric Art</p>
+                    </div>
+                </div>
+
+                <!-- Tasarım 5: Mavi Ayı/Omurga -->
+                <div class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer shadow-md">
+                    <!-- GÜNCELLEME: Dosya ismi eklendi -->
+                    <img src="Gemini_Generated_Image_fuirvrfuirvrfuir.jpg" alt="Blue Spine Stand" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-brand-gold text-xs font-bold uppercase tracking-wider mb-1">Pharma Concept</span>
+                        <h3 class="text-white text-xl font-bold" data-i18n="project_5_title">BioSpine Summit</h3>
+                        <p class="text-gray-300 text-sm mt-2" data-i18n="project_5_desc">Large Scale Graphic Walls</p>
+                    </div>
+                </div>
+
+                <!-- Tasarım 6: Moleküler/Bilim -->
+                <div class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer shadow-md">
+                    <!-- GÜNCELLEME: Dosya ismi eklendi -->
+                    <img src="Gemini_Generated_Image_xs1rszxs1rszxs1r.jpg" alt="Molecular Stand" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 portfolio-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-brand-gold text-xs font-bold uppercase tracking-wider mb-1">Science Concept</span>
+                        <h3 class="text-white text-xl font-bold" data-i18n="project_6_title">Molecule Labs</h3>
+                        <p class="text-gray-300 text-sm mt-2" data-i18n="project_6_desc">Modern Scientific Display</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İş Süreci -->
+    <section id="process" class="py-20 bg-brand-900 text-white relative">
+        <div class="absolute inset-0 overflow-hidden opacity-10">
+            <i class="fas fa-drafting-compass absolute -top-10 -right-10 text-9xl"></i>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold" data-i18n="process_title">Our Process</h2>
+                <p class="text-brand-100 mt-4" data-i18n="process_desc">We manage your fair preparation process with professional steps, away from stress.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div class="relative">
+                    <div class="w-20 h-20 bg-brand-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 border-4 border-brand-800 shadow-xl">1</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="step_1_title">Brief & Discovery</h3>
+                    <p class="text-brand-100 text-sm" data-i18n="step_1_desc">We listen to your needs and review technical specifications.</p>
+                </div>
+                <div class="relative">
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-1 bg-brand-800 -z-10"></div>
+                    <div class="w-20 h-20 bg-brand-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 border-4 border-brand-800 shadow-xl">2</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="step_2_title">3D Design</h3>
+                    <p class="text-brand-100 text-sm" data-i18n="step_2_desc">We present your dream stand with photorealistic 3D visuals.</p>
+                </div>
+                <div class="relative">
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-1 bg-brand-800 -z-10"></div>
+                    <div class="w-20 h-20 bg-brand-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 border-4 border-brand-800 shadow-xl">3</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="step_3_title">Production</h3>
+                    <p class="text-brand-100 text-sm" data-i18n="step_3_desc">We meticulously produce the approved design in our workshop.</p>
+                </div>
+                <div class="relative">
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-1 bg-brand-800 -z-10"></div>
+                    <div class="w-20 h-20 bg-brand-gold text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 border-4 border-brand-800 shadow-xl">4</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="step_4_title">Install & Delivery</h3>
+                    <p class="text-brand-100 text-sm" data-i18n="step_4_desc">Complete installation and timely delivery at the fairground.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim Formu -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 gap-16 items-start">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6" data-i18n="contact_title">Get a Quote for Your Stand</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed" data-i18n="contact_desc">
+                        Contact us immediately to make a difference at your next fair. Our expert team will get back to you within 24 hours.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6 border-b pb-4" data-i18n="form_title">Quick Quote Form</h3>
+                    
+                    <!-- GÜNCELLEME: target="_blank" eklendi. Form yeni sekmede açılıp gönderilecek -->
+                    <form class="space-y-4" action="https://formsubmit.co/sentosuntahir@gmail.com" method="POST" target="_blank">
+                        <!-- Ayarlar: Konu başlığı ve spam koruması -->
+                        <input type="hidden" name="_subject" value="Yeni Fuar Standı Teklifi!">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <!-- Başarılı gönderimden sonra geri döneceği sayfa (Opsiyonel, şu an boş bıraktık) -->
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="label_name">Full Name</label>
+                                <input type="text" name="Ad Soyad" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="label_company">Company Name</label>
+                                <input type="text" name="Firma Adı" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" required>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="label_phone">Phone</label>
+                                <input type="tel" name="Telefon" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="label_email">Email</label>
+                                <input type="email" name="E-posta" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none" required>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                             <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="label_fair">Fair Name</label>
+                                <input type="text" name="Fuar Adı" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="label_size">Stand Area (m²)</label>
+                                <input type="number" name="Stand Alanı" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="label_type">Stand Type Preference</label>
+                            <select name="Stand Tercihi" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none">
+                                <option>Wooden</option>
+                                <option>Maxima</option>
+                                <option>Modular</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="label_notes">Additional Notes</label>
+                            <textarea name="Notlar" rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-600 text-white font-bold py-4 rounded-lg hover:bg-brand-700 transition-colors shadow-lg flex items-center justify-center gap-2">
+                            <span data-i18n="btn_submit">Send Request</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-brand-600 rounded-md flex items-center justify-center text-white font-bold text-sm">E</div>
+                        <span class="font-bold text-xl">EXPOMASTER</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-i18n="footer_desc">
+                        10 years of experience in exhibition stand design and application. Your solution partner in domestic and international fairs.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-white mb-4" data-i18n="footer_services">Services</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-brand-500 transition-colors">Wooden Design</a></li>
+                        <li><a href="#" class="hover:text-brand-500 transition-colors">Maxima Systems</a></li>
+                        <li><a href="#" class="hover:text-brand-500 transition-colors">Equipment Rental</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white mb-4" data-i18n="footer_corporate">Corporate</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#about" class="hover:text-brand-500 transition-colors" data-i18n="nav_about">About Us</a></li>
+                        <li><a href="#portfolio" class="hover:text-brand-500 transition-colors" data-i18n="nav_portfolio">Capabilities</a></li>
+                        <li><a href="#contact" class="hover:text-brand-500 transition-colors" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white mb-4" data-i18n="footer_follow">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-600 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-600 transition-all">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500 text-center md:text-left">
+                    &copy; 2024 ExpoMaster. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript - Translations & Logic -->
+    <script>
+        const translations = {
+            tr: {
+                nav_home: "Ana Sayfa",
+                nav_services: "Hizmetler",
+                nav_portfolio: "Yetenekler",
+                nav_process: "Süreç",
+                nav_quote: "Teklif Al",
+                nav_contact: "İletişim",
+                nav_about: "Hakkımızda",
+                hero_badge: "Global Fuarlarda Çözüm Ortağınız",
+                hero_title_1: "Markanızı",
+                hero_highlight: "Fuarlarda",
+                hero_title_2: "Yıldızlaştırın",
+                hero_desc: "Özel tasarım ahşap standlardan modüler sistemlere kadar, markanızın kimliğini yansıtan etkileyici fuar alanları tasarlıyor ve kuruyoruz.",
+                btn_free_quote: "Ücretsiz Tasarım Teklifi",
+                btn_view_portfolio: "Kabiliyetlerimizi Keşfedin",
+                feature_3d: "3D Tasarım Desteği",
+                feature_logistic: "Lojistik & Depolama",
+                feature_install: "Anahtar Teslim Kurulum",
+                feature_global: "Yurt İçi & Yurt Dışı",
+                services_title: "Hizmetlerimiz",
+                services_desc: "Sadece bir stand değil, ziyaretçilerinizi etkileyecek bir deneyim alanı inşa ediyoruz.",
+                service_1_title: "Özel Ahşap Tasarım",
+                service_1_desc: "Markanıza özel, sınırların olmadığı, tamamen özgün ahşap stand tasarımları. Prestijinizi en üst seviyeye taşıyan VIP alanlar.",
+                service_2_title: "Maxima & Modüler",
+                service_2_desc: "Şık, modern ve maliyet etkin çözümler. Maxima sistemlerin alüminyum şıklığı ile hem hızlı kurulum hem de estetik bir görünüm.",
+                service_3_title: "Teknik & Lojistik",
+                service_3_desc: "Standın nakliyesinden, elektrik ve aydınlatma kurulumuna, fuar sonrası demontajdan depolamaya kadar tüm süreci biz yönetiyoruz.",
+                portfolio_title: "Neler Yapabiliriz?",
+                portfolio_desc: "Hayalinizdeki standı gerçeğe dönüştürmek için sınır tanımıyoruz. İşte potansiyelimizden örnekler.",
+                project_1_title: "GreenTech Pavyonu",
+                project_1_desc: "Sürdürülebilir Truss & Bitkiler",
+                project_2_title: "Neural Nexus",
+                project_2_desc: "Etkileyici LED Deneyimi",
+                project_3_title: "Precision Spinal",
+                project_3_desc: "Temiz Hatlar & Yumuşak Işık",
+                project_4_title: "DataLogic Sistemleri",
+                project_4_desc: "Sıcak Ahşap & Geometrik Sanat",
+                project_5_title: "BioSpine Zirvesi",
+                project_5_desc: "Büyük Ölçekli Grafik Duvarlar",
+                project_6_title: "Molekül Laboratuvarları",
+                project_6_desc: "Modern Bilimsel Sergi",
+                view_all: "Projenizi Başlatın",
+                next_project: "Sıradaki Sizin Projeniz",
+                get_quote_arrow: "Teklif İste ->",
+                process_title: "Çalışma Sürecimiz",
+                process_desc: "Fuar hazırlık sürecinizi stresten uzak, profesyonel adımlarla yönetiyoruz.",
+                step_1_title: "Brief & Keşif",
+                step_1_desc: "İhtiyaçlarınızı dinliyor, teknik şartnameyi inceliyoruz.",
+                step_2_title: "3D Tasarım",
+                step_2_desc: "Hayalinizdeki standı fotorealistik 3D görsellerle sunuyoruz.",
+                step_3_title: "Üretim",
+                step_3_desc: "Onaylanan tasarımı atölyemizde titizlikle üretiyoruz.",
+                step_4_title: "Kurulum & Teslim",
+                step_4_desc: "Fuar alanında eksiksiz kurulum ve zamanında teslimat.",
+                contact_title: "Fuar Standı İçin Teklif Alın",
+                contact_desc: "Bir sonraki fuarınızda fark yaratmak için hemen bizimle iletişime geçin. Uzman ekibimiz 24 saat içinde size dönüş yapacaktır.",
+                contact_office: "Merkez Ofis & Atölye",
+                contact_phone: "Telefon",
+                form_title: "Hızlı Teklif Formu",
+                label_name: "Ad Soyad",
+                label_company: "Firma Adı",
+                label_phone: "Telefon",
+                label_email: "E-posta",
+                label_fair: "Fuar Adı",
+                label_size: "Stand Alanı (m²)",
+                label_type: "Stand Tipi Tercihi",
+                label_notes: "Ek Notlar",
+                btn_submit: "Teklifi Gönder",
+                msg_success: "Talebiniz ulaştı! Tasarım ekibimiz en kısa sürede size dönüş yapacak.",
+                footer_desc: "Fuar stand tasarımı ve uygulamasında 10 yıllık deneyim. Yurt içi ve yurt dışı fuarlarda markanızın çözüm ortağı.",
+                footer_services: "Hizmetler",
+                footer_corporate: "Kurumsal",
+                footer_follow: "Takip Edin"
+            },
+            en: {
+                nav_home: "Home",
+                nav_services: "Services",
+                nav_portfolio: "Capabilities",
+                nav_process: "Process",
+                nav_quote: "Get Quote",
+                nav_contact: "Contact",
+                nav_about: "About Us",
+                hero_badge: "Your Global Solution Partner",
+                hero_title_1: "Make Your Brand",
+                hero_highlight: "A Star",
+                hero_title_2: "At Exhibitions",
+                hero_desc: "From custom wooden stands to modular systems, we design and build impressive exhibition spaces that reflect your brand identity.",
+                btn_free_quote: "Free Design Quote",
+                btn_view_portfolio: "Explore Capabilities",
+                feature_3d: "3D Design Support",
+                feature_logistic: "Logistics & Storage",
+                feature_install: "Turnkey Installation",
+                feature_global: "Domestic & International",
+                services_title: "Our Services",
+                services_desc: "We build not just a stand, but an experience area that will impress your visitors.",
+                service_1_title: "Custom Wooden Design",
+                service_1_desc: "Unique wooden stand designs specific to your brand. VIP areas that take your prestige to the top level.",
+                service_2_title: "Maxima & Modular",
+                service_2_desc: "Stylish, modern and cost-effective solutions. Aluminum elegance of Maxima systems with fast installation.",
+                service_3_title: "Technical & Logistics",
+                service_3_desc: "We manage the entire process from transport, electrical and lighting installation to dismantling and storage.",
+                portfolio_title: "What We Can Create",
+                portfolio_desc: "Explore our design capabilities and imagine what we can build for you.",
+                project_1_title: "GreenTech Pavilion",
+                project_1_desc: "Sustainable Truss & Plants",
+                project_2_title: "Neural Nexus",
+                project_2_desc: "Immersive LED Experience",
+                project_3_title: "Precision Spinal",
+                project_3_desc: "Clean Lines & Soft Lighting",
+                project_4_title: "DataLogic Systems",
+                project_4_desc: "Warm Wood & Geometric Art",
+                project_5_title: "BioSpine Summit",
+                project_5_desc: "Large Scale Graphic Walls",
+                project_6_title: "Molecule Labs",
+                project_6_desc: "Modern Scientific Display",
+                view_all: "Start Your Project",
+                next_project: "Your Next Project",
+                get_quote_arrow: "Get Quote ->",
+                process_title: "Our Process",
+                process_desc: "We manage your fair preparation process with professional steps, away from stress.",
+                step_1_title: "Brief & Discovery",
+                step_1_desc: "We listen to your needs and review technical specifications.",
+                step_2_title: "3D Design",
+                step_2_desc: "We present your dream stand with photorealistic 3D visuals.",
+                step_3_title: "Production",
+                step_3_desc: "We meticulously produce the approved design in our workshop.",
+                step_4_title: "Install & Delivery",
+                step_4_desc: "Complete installation and timely delivery at the fairground.",
+                contact_title: "Get a Quote for Your Stand",
+                contact_desc: "Contact us immediately to make a difference at your next fair. Our expert team will get back to you within 24 hours.",
+                contact_office: "Head Office & Workshop",
+                contact_phone: "Phone",
+                form_title: "Quick Quote Form",
+                label_name: "Full Name",
+                label_company: "Company Name",
+                label_phone: "Phone",
+                label_email: "Email",
+                label_fair: "Fair Name",
+                label_size: "Stand Area (m²)",
+                label_type: "Stand Type Preference",
+                label_notes: "Additional Notes",
+                btn_submit: "Send Request",
+                msg_success: "Request received! Our design team will contact you shortly.",
+                footer_desc: "10 years of experience in exhibition stand design and application. Your solution partner in domestic and international fairs.",
+                footer_services: "Services",
+                footer_corporate: "Corporate",
+                footer_follow: "Follow Us"
+            },
+            fr: {
+                nav_home: "Accueil",
+                nav_services: "Services",
+                nav_portfolio: "Capacités",
+                nav_process: "Processus",
+                nav_quote: "Devis",
+                nav_contact: "Contact",
+                nav_about: "À Propos",
+                hero_badge: "Partenaire de Solutions Globales",
+                hero_title_1: "Faites Briller",
+                hero_highlight: "Votre Marque",
+                hero_title_2: "Aux Salons",
+                hero_desc: "Des stands en bois sur mesure aux systèmes modulaires, nous concevons des espaces d'exposition impressionnants.",
+                btn_free_quote: "Devis Gratuit",
+                btn_view_portfolio: "Explorer nos Capacités",
+                feature_3d: "Conception 3D",
+                feature_logistic: "Logistique & Stockage",
+                feature_install: "Installation Clé en Main",
+                feature_global: "National & International",
+                services_title: "Nos Services",
+                services_desc: "Nous construisons plus qu'un stand, une expérience pour vos visiteurs.",
+                service_1_title: "Design en Bois",
+                service_1_desc: "Des designs uniques en bois. Des espaces VIP qui augmentent votre prestige.",
+                service_2_title: "Maxima & Modulaire",
+                service_2_desc: "Solutions élégantes et économiques. L'élégance de l'aluminium avec une installation rapide.",
+                service_3_title: "Technique & Logistique",
+                service_3_desc: "Nous gérons tout : transport, électricité, éclairage, démontage et stockage.",
+                portfolio_title: "Ce Que Nous Pouvons Créer",
+                portfolio_desc: "Découvrez nos capacités de conception et imaginez ce que nous pouvons construire pour vous.",
+                project_1_title: "Pavillon GreenTech",
+                project_1_desc: "Treillis Durable & Plantes",
+                project_2_title: "Neural Nexus",
+                project_2_desc: "Expérience LED Immersive",
+                project_3_title: "Precision Spinal",
+                project_3_desc: "Lignes Épurées & Éclairage Doux",
+                project_4_title: "DataLogic Systems",
+                project_4_desc: "Bois Chaleureux & Art Géométrique",
+                project_5_title: "Sommet BioSpine",
+                project_5_desc: "Murs Graphiques à Grande Échelle",
+                project_6_title: "Laboratoires Molécule",
+                project_6_desc: "Exposition Scientifique Moderne",
+                view_all: "Commencez Votre Projet",
+                next_project: "Votre Projet",
+                get_quote_arrow: "Demander Devis ->",
+                process_title: "Notre Processus",
+                process_desc: "Nous gérons votre préparation de salon sans stress.",
+                step_1_title: "Brief",
+                step_1_desc: "Nous écoutons vos besoins et spécifications.",
+                step_2_title: "Design 3D",
+                step_2_desc: "Nous présentons votre stand en visuels 3D photoréalistes.",
+                step_3_title: "Production",
+                step_3_desc: "Fabrication méticuleuse dans notre atelier.",
+                step_4_title: "Installation",
+                step_4_desc: "Installation complète et livraison à temps.",
+                contact_title: "Obtenez un Devis",
+                contact_desc: "Contactez-nous pour faire la différence. Réponse sous 24h.",
+                contact_office: "Siège & Atelier",
+                contact_phone: "Téléphone",
+                form_title: "Formulaire Rapide",
+                label_name: "Nom Complet",
+                label_company: "Société",
+                label_phone: "Téléphone",
+                label_email: "E-mail",
+                label_fair: "Nom du Salon",
+                label_size: "Surface (m²)",
+                label_type: "Type de Stand",
+                label_notes: "Notes",
+                btn_submit: "Envoyer",
+                msg_success: "Reçu! Notre équipe vous contactera.",
+                footer_desc: "10 ans d'expérience en design de stands. Votre partenaire pour les foires.",
+                footer_services: "Services",
+                footer_corporate: "Corporatif",
+                footer_follow: "Suivez-nous"
+            },
+            de: {
+                nav_home: "Startseite",
+                nav_services: "Leistungen",
+                nav_portfolio: "Fähigkeiten",
+                nav_process: "Prozess",
+                nav_quote: "Angebot",
+                nav_contact: "Kontakt",
+                nav_about: "Über Uns",
+                hero_badge: "Ihr Globaler Lösungspartner",
+                hero_title_1: "Ihre Marke",
+                hero_highlight: "Auf Messen",
+                hero_title_2: "Zum Star Machen",
+                hero_desc: "Von individuellen Holzständen bis zu Modulsystemen gestalten wir beeindruckende Ausstellungsflächen.",
+                btn_free_quote: "Kostenloses Angebot",
+                btn_view_portfolio: "Fähigkeiten Entdecken",
+                feature_3d: "3D-Design",
+                feature_logistic: "Logistik & Lagerung",
+                feature_install: "Schlüsselfertige Montage",
+                feature_global: "In- & Ausland",
+                services_title: "Unsere Leistungen",
+                services_desc: "Wir bauen nicht nur einen Stand, sondern ein Erlebnis für Ihre Besucher.",
+                service_1_title: "Individuelles Holzdesign",
+                service_1_desc: "Einzigartige Holzdesigns speziell für Ihre Marke. VIP-Bereiche für höchsten Anspruch.",
+                service_2_title: "Maxima & Modular",
+                service_2_desc: "Stilvolle, moderne und kostengünstige Lösungen. Schnelle Montage mit Aluminium-Eleganz.",
+                service_3_title: "Technik & Logistik",
+                service_3_desc: "Wir managen Transport, Elektro, Beleuchtung, Abbau und Lagerung.",
+                portfolio_title: "Was Wir Schaffen Können",
+                portfolio_desc: "Entdecken Sie unsere Designfähigkeiten und stellen Sie sich vor, was wir für Sie bauen können.",
+                project_1_title: "GreenTech Pavillon",
+                project_1_desc: "Nachhaltiges Fachwerk & Pflanzen",
+                project_2_title: "Neural Nexus",
+                project_2_desc: "Immersives LED-Erlebnis",
+                project_3_title: "Precision Spinal",
+                project_3_desc: "Klare Linien & Weiches Licht",
+                project_4_title: "DataLogic Systems",
+                project_4_desc: "Warmes Holz & Geometrische Kunst",
+                project_5_title: "BioSpine Summit",
+                project_5_desc: "Großformatige Grafikwände",
+                project_6_title: "Molecule Labs",
+                project_6_desc: "Moderne Wissenschaftsausstellung",
+                view_all: "Starten Sie Ihr Projekt",
+                next_project: "Ihr Nächstes Projekt",
+                get_quote_arrow: "Angebot Anfordern ->",
+                process_title: "Unser Prozess",
+                process_desc: "Stressfreie Vorbereitung für Ihren Messeauftritt.",
+                step_1_title: "Briefing",
+                step_1_desc: "Wir analysieren Ihre Bedürfnisse und Anforderungen.",
+                step_2_title: "3D-Design",
+                step_2_desc: "Fotorealistische 3D-Visualisierung Ihres Standes.",
+                step_3_title: "Produktion",
+                step_3_desc: "Sorgfältige Fertigung in unserer Werkstatt.",
+                step_4_title: "Montage",
+                step_4_desc: "Kompletter Aufbau und pünktliche Übergabe.",
+                contact_title: "Angebot Anfordern",
+                contact_desc: "Kontaktieren Sie uns für Ihren nächsten Messeerfolg. Antwort innerhalb 24 Std.",
+                contact_office: "Büro & Werkstatt",
+                contact_phone: "Telefon",
+                form_title: "Schnellanfrage",
+                label_name: "Name",
+                label_company: "Firma",
+                label_phone: "Telefon",
+                label_email: "E-Mail",
+                label_fair: "Messenamen",
+                label_size: "Standfläche (m²)",
+                label_type: "Standtyp",
+                label_notes: "Notizen",
+                btn_submit: "Absenden",
+                msg_success: "Empfangen! Unser Team meldet sich.",
+                footer_desc: "10 Jahre Erfahrung im Messebau. Ihr Partner für nationale und internationale Messen.",
+                footer_services: "Leistungen",
+                footer_corporate: "Unternehmen",
+                footer_follow: "Folgen Sie Uns"
+            },
+            es: {
+                nav_home: "Inicio",
+                nav_services: "Servicios",
+                nav_portfolio: "Capacidades",
+                nav_process: "Proceso",
+                nav_quote: "Cotizar",
+                nav_contact: "Contacto",
+                nav_about: "Nosotros",
+                hero_badge: "Socio de Soluciones Globales",
+                hero_title_1: "Haga Brillar",
+                hero_highlight: "Su Marca",
+                hero_title_2: "En Ferias",
+                hero_desc: "Desde stands de madera personalizados hasta sistemas modulares, diseñamos espacios impresionantes.",
+                btn_free_quote: "Cotización Gratis",
+                btn_view_portfolio: "Explorar Capacidades",
+                feature_3d: "Diseño 3D",
+                feature_logistic: "Logística y Almacén",
+                feature_install: "Instalación Llave en Mano",
+                feature_global: "Nacional e Internacional",
+                services_title: "Nuestros Servicios",
+                services_desc: "Construimos más que un stand, una experiencia para sus visitantes.",
+                service_1_title: "Diseño en Madera",
+                service_1_desc: "Diseños únicos en madera. Áreas VIP que elevan su prestigio.",
+                service_2_title: "Maxima y Modular",
+                service_2_desc: "Soluciones elegantes y rentables. Elegancia de aluminio con instalación rápida.",
+                service_3_title: "Técnica y Logística",
+                service_3_desc: "Gestionamos transporte, electricidad, iluminación, desmontaje y almacenamiento.",
+                portfolio_title: "Lo Que Podemos Crear",
+                portfolio_desc: "Explore nuestras capacidades de diseño e imagine lo que podemos construir para usted.",
+                project_1_title: "Pabellón GreenTech",
+                project_1_desc: "Truss Sostenible y Plantas",
+                project_2_title: "Neural Nexus",
+                project_2_desc: "Experiencia LED Inmersiva",
+                project_3_title: "Precision Spinal",
+                project_3_desc: "Líneas Limpias e Iluminación Suave",
+                project_4_title: "Sistemas DataLogic",
+                project_4_desc: "Madera Cálida y Arte Geométrico",
+                project_5_title: "Cumbre BioSpine",
+                project_5_desc: "Paredes Gráficas a Gran Escala",
+                project_6_title: "Laboratorios Molécula",
+                project_6_desc: "Exhibición Científica Moderna",
+                view_all: "Comience Su Proyecto",
+                next_project: "Su Próximo Proyecto",
+                get_quote_arrow: "Solicitar Cotización ->",
+                process_title: "Nuestro Proceso",
+                process_desc: "Gestionamos su preparación para la feria sin estrés.",
+                step_1_title: "Brief",
+                step_1_desc: "Escuchamos sus necesidades y especificaciones.",
+                step_2_title: "Diseño 3D",
+                step_2_desc: "Presentamos su stand con visuales 3D fotorrealistas.",
+                step_3_title: "Producción",
+                step_3_desc: "Producción meticulosa en nuestro taller.",
+                step_4_title: "Instalación",
+                step_4_desc: "Instalación completa y entrega puntual.",
+                contact_title: "Solicite una Cotización",
+                contact_desc: "Contáctenos para marcar la diferencia. Respuesta en 24 horas.",
+                contact_office: "Oficina y Taller",
+                contact_phone: "Teléfono",
+                form_title: "Formulario Rápido",
+                label_name: "Nombre Completo",
+                label_company: "Empresa",
+                label_phone: "Teléfono",
+                label_email: "Email",
+                label_fair: "Nombre de Feria",
+                label_size: "Área (m²)",
+                label_type: "Tipo de Stand",
+                label_notes: "Notas",
+                btn_submit: "Enviar",
+                msg_success: "¡Recibido! Nuestro equipo le contactará.",
+                footer_desc: "10 años de experiencia en diseño de stands. Su socio en ferias.",
+                footer_services: "Servicios",
+                footer_corporate: "Corporativo",
+                footer_follow: "Síganos"
+            },
+            it: {
+                nav_home: "Home",
+                nav_services: "Servizi",
+                nav_portfolio: "Capacità",
+                nav_process: "Processo",
+                nav_quote: "Preventivo",
+                nav_contact: "Contatti",
+                nav_about: "Chi Siamo",
+                hero_badge: "Partner Globale",
+                hero_title_1: "Fai Brillare",
+                hero_highlight: "Il Tuo Brand",
+                hero_title_2: "In Fiera",
+                hero_desc: "Dagli stand in legno personalizzati ai sistemi modulari, progettiamo spazi espositivi impressionanti.",
+                btn_free_quote: "Preventivo Gratuito",
+                btn_view_portfolio: "Esplora Capacità",
+                feature_3d: "Design 3D",
+                feature_logistic: "Logistica e Magazzino",
+                feature_install: "Chiavi in Mano",
+                feature_global: "Nazionale e Internazionale",
+                services_title: "I Nostri Servizi",
+                services_desc: "Costruiamo non solo uno stand, ma un'esperienza per i visitatori.",
+                service_1_title: "Design in Legno",
+                service_1_desc: "Design unici in legno su misura. Aree VIP che elevano il tuo prestigio.",
+                service_2_title: "Maxima e Modulare",
+                service_2_desc: "Soluzioni eleganti ed economiche. Eleganza dell'alluminio con installazione rapida.",
+                service_3_title: "Tecnica e Logistica",
+                service_3_desc: "Gestiamo trasporto, elettricità, illuminazione, smontaggio e stoccaggio.",
+                portfolio_title: "Cosa Possiamo Creare",
+                portfolio_desc: "Esplora le nostre capacità di progettazione e immagina cosa possiamo costruire per te.",
+                project_1_title: "Padiglione GreenTech",
+                project_1_desc: "Traliccio Sostenibile e Piante",
+                project_2_title: "Neural Nexus",
+                project_2_desc: "Esperienza LED Immersiva",
+                project_3_title: "Precision Spinal",
+                project_3_desc: "Linee Pulite e Illuminazione Morbida",
+                project_4_title: "DataLogic Systems",
+                project_4_desc: "Legno Caldo e Arte Geometrica",
+                project_5_title: "Vertice BioSpine",
+                project_5_desc: "Pareti Grafiche su Larga Scala",
+                project_6_title: "Molecule Labs",
+                project_6_desc: "Esposizione Scientifica Moderna",
+                view_all: "Inizia il Tuo Progetto",
+                next_project: "Il Tuo Progetto",
+                get_quote_arrow: "Richiedi Preventivo ->",
+                process_title: "Il Nostro Processo",
+                process_desc: "Gestiamo la preparazione della fiera senza stress.",
+                step_1_title: "Brief",
+                step_1_desc: "Ascoltiamo le tue esigenze e specifiche.",
+                step_2_title: "Design 3D",
+                step_2_desc: "Presentiamo il tuo stand con visuales 3D fotorealistiche.",
+                step_3_title: "Produzione",
+                step_3_desc: "Produzione meticolosa nel nostro laboratorio.",
+                step_4_title: "Installazione",
+                step_4_desc: "Installazione completa e consegna puntuale.",
+                contact_title: "Richiedi Preventivo",
+                contact_desc: "Contattaci per fare la differenza. Risposta in 24 ore.",
+                contact_office: "Ufficio e Laboratorio",
+                contact_phone: "Telefono",
+                form_title: "Modulo Rapido",
+                label_name: "Nome Completo",
+                label_company: "Azienda",
+                label_phone: "Telefono",
+                label_email: "Email",
+                label_fair: "Nome Fiera",
+                label_size: "Area (m²)",
+                label_type: "Tipo di Stand",
+                label_notes: "Note",
+                btn_submit: "Invia",
+                msg_success: "Ricevuto! Il nostro team ti contatterà.",
+                footer_desc: "10 anni di esperienza nel design di stand. Il tuo partner per le fiere.",
+                footer_services: "Servizi",
+                footer_corporate: "Corporate",
+                footer_follow: "Seguici"
+            },
+            zh: {
+                nav_home: "首页",
+                nav_services: "服务",
+                nav_portfolio: "能力",
+                nav_process: "流程",
+                nav_quote: "报价",
+                nav_contact: "联系",
+                nav_about: "关于我们",
+                hero_badge: "全球展会解决方案伙伴",
+                hero_title_1: "让您的品牌",
+                hero_highlight: "在展会上",
+                hero_title_2: "闪耀光芒",
+                hero_desc: "从定制木制展台到模块化系统，我们设计和建造反映您品牌形象的令人印象深刻的展览空间。",
+                btn_free_quote: "免费设计报价",
+                btn_view_portfolio: "探索我们的能力",
+                feature_3d: "3D设计支持",
+                feature_logistic: "物流与仓储",
+                feature_install: "交钥匙安装",
+                feature_global: "国内与国际",
+                services_title: "我们的服务",
+                services_desc: "我们不仅建造展台，更打造令访客印象深刻的体验区。",
+                service_1_title: "定制木制设计",
+                service_1_desc: "专属于您品牌的独特设计。提升声望的VIP区域。",
+                service_2_title: "Maxima & 模块化",
+                service_2_desc: "时尚、现代且具有成本效益的解决方案。安装迅速。",
+                service_3_title: "技术与物流",
+                service_3_desc: "我们管理从运输、电力照明安装到拆卸和仓储的整个过程。",
+                portfolio_title: "我们可以创造什么",
+                portfolio_desc: "探索我们的设计能力，想象我们可以为您建造什么。",
+                project_1_title: "GreenTech 展馆",
+                project_1_desc: "可持续桁架与植物",
+                project_2_title: "神经核心 Nexus",
+                project_2_desc: "沉浸式 LED 体验",
+                project_3_title: "精准脊柱",
+                project_3_desc: "简洁线条与柔和照明",
+                project_4_title: "DataLogic 系统",
+                project_4_desc: "温暖木材与几何艺术",
+                project_5_title: "BioSpine 峰会",
+                project_5_desc: "大型图形墙",
+                project_6_title: "分子实验室",
+                project_6_desc: "现代科学展示",
+                view_all: "开始您的项目",
+                next_project: "您的下一个项目",
+                get_quote_arrow: "获取报价 ->",
+                process_title: "工作流程",
+                process_desc: "我们专业管理您的展会准备过程，让您无忧。",
+                step_1_title: "需求简报",
+                step_1_desc: "倾听您的需求并审查技术规范。",
+                step_2_title: "3D设计",
+                step_2_desc: "以逼真的3D视觉效果呈现您的展台。",
+                step_3_title: "生产制作",
+                step_3_desc: "在我们的车间精心制作。",
+                step_4_title: "安装交付",
+                step_4_desc: "展会现场的完整安装和准时交付。",
+                contact_title: "获取展台报价",
+                contact_desc: "立即联系我们。我们的专家团队将在24小时内回复您。",
+                contact_office: "总部与工厂",
+                contact_phone: "电话",
+                form_title: "快速报价单",
+                label_name: "姓名",
+                label_company: "公司名称",
+                label_phone: "电话",
+                label_email: "电子邮件",
+                label_fair: "展会名称",
+                label_size: "展台面积 (m²)",
+                label_type: "展台类型偏好",
+                label_notes: "备注",
+                btn_submit: "发送请求",
+                msg_success: "收到！我们的设计团队将尽快联系您。",
+                footer_desc: "10年展台设计与搭建经验。您在国内外展会的解决方案合作伙伴。",
+                footer_services: "服务",
+                footer_corporate: "公司",
+                footer_follow: "关注我们"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if(translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        function showSuccess() {
+            const successMsg = document.getElementById('success-message');
+            const btn = document.querySelector('form button');
+            const originalHTML = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> ...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                successMsg.classList.remove('hidden');
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+                document.querySelector('form').reset();
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                }, 6000);
+            }, 1500);
+        }
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-md');
+                nav.classList.replace('bg-white/95', 'bg-white/98');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.replace('bg-white/98', 'bg-white/95');
+            }
+        });
+    </script>
+</body>
+</html>
